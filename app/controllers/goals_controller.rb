@@ -1,6 +1,12 @@
 class GoalsController < ApplicationController
 
-    get '/users/:slug'
-        #gets user
+    get '/goals' do 
+        if logged_in?
+            @goals = Goal.all 
+            erb :'goals/show'
+        else
+            redirect to '/login'
+        end
     end
+
 end
