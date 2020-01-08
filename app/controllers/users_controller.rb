@@ -28,13 +28,13 @@ class UsersController < ApplicationController
     end
 
     post '/login' do 
-        binding.pry
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
           redirect to "/goals" #this is goals show page (homepage)
         else
-          redirect to '/signup'
+          redirect to '/login'
+          #flash alert: please try again
         end
     end
 
