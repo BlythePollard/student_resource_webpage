@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
 
     get '/users/:slug'
-        #gets 
+        #gets user
     end
 end
