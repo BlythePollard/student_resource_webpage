@@ -39,9 +39,9 @@ class UsersController < ApplicationController
     end
 
     get '/logout' do 
-        if !logged_in?
+        if logged_in?
             session.destroy
-            redirect to '/login'
+            redirect to '/'
             #flash message
         else
             redirect to '/'

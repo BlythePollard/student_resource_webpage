@@ -1,0 +1,12 @@
+<h2> Edit Goal </h2>
+
+<form method="post" action='/goals/<%=@goal.id%>'>
+<input id="hidden" type="hidden" name="_method" value="PATCH">
+    <p>My Goal: <input type="text" name="content" value="<%=@goal.content%>"></p>
+    <p>Date Created: <input type="text" name="date_created" value="<%=@goal.date_created%>"></p>
+    <p>I want to accomplish my goal by... <input type="text" name="completion_goal_date" value="<%=@goal.completion_goal_date%>"> </p>
+    <p>Goal Completed? <input type="checkbox" name="successful?" <%= 'checked' if @goal.successful? == "on" %> ></p>
+    <input type="submit" value="Edit Goal">
+</form>
+
+

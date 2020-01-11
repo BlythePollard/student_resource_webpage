@@ -1,11 +1,12 @@
-<h1> Welcome to Your Student Resource Homepage!</h1>
+<h1> Welcome to Your Student Resource Homepage</h1>
 
 
 <nav>
   <% if logged_in? %>
-    <a href="/goals/new"> Create Tweet </a>
+    <p>Hi, <%=current_user.username %>!</p>
+    <a href="/goals/new"> Create Goal </a>
     <a href="/logout"> Log Out </a>
-    <p>Welcome, <%=current_user.username %></p>
+    
 
   <% else %>
     <p>Please Log In or Sign Up below:</p>

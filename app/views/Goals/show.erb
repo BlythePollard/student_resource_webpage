@@ -1,1 +1,19 @@
-<h1> Here are Your Goals </h1>
+<h2>Your Goal</h2>
+
+    <p>Date Created: <%=@goal.date_created%></p>
+    <p>To be accomplished by: <%=@goal.completion_goal_date%></p>
+    <h2><%=@goal.content%></h2>
+    
+    <% if @goal.successful? == "0" %>
+    <p>You Accomplished This Goal!</p>
+    <%else%>
+    <p><a href="/goals/<%=@goal.id%>/edit">Edit or Mark Accomplished </a></p>
+    <%end%>
+
+    <p><a href="/goals">Home</a></p>
+
+    <form method="post" action="/goals/<%=@goal.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Goal">
+    </form>
+
