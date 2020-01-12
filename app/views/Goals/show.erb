@@ -1,3 +1,8 @@
+<% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %>
+
+
 <h2>Your Goal</h2>
 
     <p>Date Created: <%=@goal.date_created%></p>
@@ -12,7 +17,7 @@
 
     <p><a href="/goals">Home</a></p>
 
-    <form method="post" action="/goals/<%=@goal.id%>/delete">
+    <form method="post" action="/goals/<%= @goal.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete Goal">
     </form>
