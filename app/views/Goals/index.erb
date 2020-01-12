@@ -15,10 +15,9 @@
 <p><a href="/goals/new">Make a New Goal </a></p><br>
 
 <div class="main">
-<% @goals.each do |goal| %>
+<% @goals.each.with_index(1) do |goal, i| %>
     <div class="goal">
-    
-    <p><%=goal.content%></p>
+    <h3><a href="/goals/<%=goal.id%>"><%= i %>.</a> <%=goal.content%></h3></td> 
     <p>Date Created: <%=goal.date_created%></p>
     <p>To be accomplished by: <%=goal.completion_goal_date%></p>
     <% if !!goal.successful?%>
@@ -34,10 +33,9 @@
     <%end%>
     
     </div>
+    <a href="/logout"> Log Out </a>
+
 </div>
-
-<a href="/logout"> Log Out </a>
-
 
 
     

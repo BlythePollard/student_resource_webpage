@@ -39,7 +39,6 @@ class GoalsController < ApplicationController
         erb :'/goals/show'
     end
 
-
     get '/goals/:id/edit' do 
         if logged_in?
             @goal = current_user.goals.find_by_id(params[:id])

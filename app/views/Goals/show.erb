@@ -5,9 +5,9 @@
 
 <h2>Your Goal</h2>
 
+    <h3><%=@goal.content%></h3><br>
     <p>Date Created: <%=@goal.date_created%></p>
     <p>To be accomplished by: <%=@goal.completion_goal_date%></p>
-    <h2><%=@goal.content%></h2>
     
     <% if @goal.successful? == "0" %>
     <p>You Accomplished This Goal!</p>
