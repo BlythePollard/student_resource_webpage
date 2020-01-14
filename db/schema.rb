@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200108013056) do
+ActiveRecord::Schema.define(version: 20200114224659) do
 
   create_table "goals", force: :cascade do |t|
     t.string  "content"
     t.string  "date_created"
     t.string  "completion_goal_date"
-    t.integer "successful?"
+    t.integer "successful"
     t.integer "user_id"
   end
 

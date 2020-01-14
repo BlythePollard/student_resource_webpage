@@ -21,12 +21,9 @@ class GoalsController < ApplicationController
     end
 
     post '/goals' do 
+        successful = params[:successful] ? 1 : 0
         if logged_in? 
-            if !!params[:successful?] 
-                @goal = current_user.goals.build(content: params[:content], date_created: params[:date_created], completion_goal_date: params[:completion_goal_date], successful?: params[:successful?])
-            else 
-                @goal = current_user.goals.build(content: params[:content], date_created: params[:date_created], completion_goal_date: params[:completion_goal_date])
-            end
+            @goal = current_user.goals.build(content: params[:content], date_created: params[:date_created], completion_goal_date: params[:completion_goal_date], successful: successful)
             @goal.save
             redirect to "/goals"
         else 
@@ -53,20 +50,17 @@ class GoalsController < ApplicationController
     end
 
     patch '/goals/:id' do 
+        successful = params[:successful] ? 1 : 0
         if logged_in?
-           @goal = current_user.goals.find_by_id(params[:id])
-           if @goal
-            if !!params[:successful?] 
-                @goal = current_user.goals.build(content: params[:content], date_created: params[:date_created], completion_goal_date: params[:completion_goal_date], successful?: params[:successful?])
-            else 
-                @goal = current_user.goals.build(content: params[:content], date_created: params[:date_created], completion_goal_date: params[:completion_goal_date])
-            end
+            @goal = current_user.goals.find_by_id(params[:id])
+            @goal.update(params[:successful?].to_h)
+            @goal.content = params[:content]
+            @goal.date_created = params[:date_created]
+            @goal.completion_goal_date = params[:completion_goal_date]
+            @goal.successful = successful
             @goal.save
             flash[:message] = "Your Goal Has Been Updated."
             redirect to '/goals'
-            else  
-                redirect to '/goals'
-            end
         else
             flash[:message] = "Please Login to Continue"
             redirect to '/'
